@@ -1,5 +1,5 @@
 "use strict"; // Activation du mode strict pour plus d'info sur les erreurs de structuration
-console.log('Hello world');
+console.log('Objet litéraux');
 
 // Objet literal representant une voiture dans un site de vente d'occas
 const carPeugeot = {
