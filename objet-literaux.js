@@ -58,14 +58,47 @@ const brand = {
 };
 
 // Pour crée une copie d'un objet existant: Object.create(unObjet)
-const carCitroen = Object.create( car );
+const carCitroen = Object.create(car);
 carCitroen.id = 3;
 carCitroen.label = 'Critrono PiPo a vendre';
 carCitroen.brand_id = 6;
-carCitroen.brand = Object.create( brand );
+carCitroen.brand = Object.create(brand);
 carCitroen.brand.id = carCitroen.brand_id;
 carCitroen.brand.label = 'Citroen';
 carCitroen.price = 2000.00;
 
 console.log(car);
 console.dir(carCitroen);
+
+// Manipulation sur les objet literaux
+//  - Fusion de deux objets: Object.assign(objetCible, objetSource)
+const objCible = {
+    a: 5,
+    b: 9,
+    d: 6
+};
+
+const objSource = {
+    c: 1,
+    d: 25,
+    e: 82
+};
+
+Object.assign(objCible, objSource);
+console.dir(objCible);
+
+// - Gel d'un objet (pour le rendre non modifiable): Object.freeze(unObjet)
+// l'objet devient immutable
+const objLambda = {
+    age: 15,
+    name: 'toto',
+};
+
+Object.freeze(objLambda)
+objLambda.age = 13; // En mode strict, on a une erreur (sinon la modif ne marche pas mais pas d'erreur)
+
+console.dir(objLambda);
+
+
+
+// Doc de l'Object : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object
