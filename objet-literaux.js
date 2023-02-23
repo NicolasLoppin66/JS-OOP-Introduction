@@ -95,10 +95,22 @@ const objLambda = {
 };
 
 Object.freeze(objLambda)
-objLambda.age = 13; // En mode strict, on a une erreur (sinon la modif ne marche pas mais pas d'erreur)
+// objLambda.age = 13; // En mode strict, on a une erreur (sinon la modif ne marche pas mais pas d'erreur)
 
 console.dir(objLambda);
 
+// Object.assign() peut etre utiliser pour cloner un objet (même gelé) avec un objetCible vide
+const objLambdaCopie = Object.assign({}, objLambda);
+// La copie ne récupère pas l'état gelé de l'objet source
+objLambdaCopie.age = 12;
 
+console.dir(objLambda);
+console.dir(objLambdaCopie);
+
+// On pourrait copier un objet avec Object.create(), mais cet methode conserve l'état gelé de l'obget de référence
+const objLambdaCopie2 = Object.create(objLambda);
+objLambdaCopie2.age = 18; // Erreur
+
+console.dir(objLambdaCopie2);
 
 // Doc de l'Object : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object
