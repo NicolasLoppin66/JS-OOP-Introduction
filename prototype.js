@@ -40,12 +40,20 @@ const Car = function (jsonData) {
     this.brand = new Brand(jsonData.brand);
 
     this.price = jsonData.price;
+
+    Car.counter ++
 }
 
 // Définition d'une méthode liée a une instance
 Car.prototype.getTaxePrice = function () {
     return this.price * 1.2;
 };
+
+// Définition d'une nouvelle propriété statique et une méthode statique
+Car.counter = 0; // PHP: Car::counter
+Car.count = function() { // PHP: Car::count()
+    return `${Car.counter} Car sont sorties d'usine`;
+}
 
 const carPeugeot = new Car({
     id: 5,
@@ -56,6 +64,21 @@ const carPeugeot = new Car({
         label: 'Peugoet',
     },
     price: 15000.00,
-})
+});
+console.log(Car.count());
+
+
+const carNissan = new Car({
+    id: 18,
+    label: 'Nissan sx180',
+    brand_id: 3,
+    brand: {
+        id: 3,
+        label: 'Peugoet',
+    },
+    price: 30000.00,
+});
+console.log(Car.count());
 
 console.dir(carPeugeot);
+console.dir(carNissan);
