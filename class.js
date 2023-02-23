@@ -81,6 +81,8 @@ class Car extends LabelEntity {
         this.brand = new Brand(jsonData.brand);
         this.price = jsonData.price;
 
+        this.#paint
+
         Car.counter++;
     }
 
@@ -97,7 +99,13 @@ class Car extends LabelEntity {
 // Test des classes
 let arrCars = [];
 for (let car of jsonCars.cars) {
-    arrCars.push(new Car(car));
+    let objCar = new Car(car)
+    arrCars.push(objCar);
+
+    // ### Pour le demo de get et set
+    objCar.color = 'blue';
+    console.log(objCar.color);
+    // ###
 }
 
 console.log(arrCars);
